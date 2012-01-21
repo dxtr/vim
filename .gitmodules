@@ -1,0 +1,12 @@
+[submodule "/home/dxtr/.vim/bundle/vim-endwise"]
+	path = /home/dxtr/.vim/bundle/vim-endwise
+	url = git://github.com/tpope/vim-endwise.git
+[submodule "/home/dxtr/.vim/bundle/vim-pony"]
+	path = /home/dxtr/.vim/bundle/vim-pony
+	url = git://github.com/rainerborene/vim-pony.git
+[submodule "/home/dxtr/.vim/bundle/vim-script-runner"]
+	path = /home/dxtr/.vim/bundle/vim-script-runner
+	url = git://github.com/ironcamel/vim-script-runner
+[submodule "/home/dxtr/.vim/bundle/xmledit"]
+	path = /home/dxtr/.vim/bundle/xmledit
+	url = https://github.com/sukima/xmledit.git
