@@ -1,5 +1,5 @@
 set nocompatible
-"set shell=/bin/tcsh
+set shell=/usr/bin/zsh
 call pathogen#infect()
 
 " Tabs
