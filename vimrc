@@ -146,13 +146,9 @@ augroup END
 "let NERDCreateDefaultMappings=0
 ":map <Leader>nc :call NERDComment(0, "toggle")<CR>
 
-"" CommandT
-"let g:CommandTMatchWindowAtTop = 1
-"map <Leader>f :CommandT<CR>
-
 "" fuzzyfinder
-"map <Leader>b :FufBuffer<CR>
-"let g:fuzzy_ignore = '.o;.obj;.bak;.exe;.dylib;.pyc;.pyo;.DS_Store;.db'
+map <Leader>b :FufBuffer<CR>
+let g:fuzzy_ignore = '.o;.obj;.bak;.exe;.dylib;.pyc;.pyo;.DS_Store;.db'
 
 "" autocomplpop
 "let g:AutoComplPop_IgnoreCaseOption = 0
