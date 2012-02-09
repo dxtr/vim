@@ -51,13 +51,13 @@ set smartcase " Ignore case when searching lowercase
 " Colors
 set background=dark
 syntax on
-"colorscheme ir_black
+colorscheme ir_black
 "colorscheme peachpuff
 "colorscheme neverland-darker
 "let g:solarized_termcolors=256
 "let g:solarized_termtrans=0
 "colorscheme solarized
-colorscheme zenburn
+"colorscheme zenburn
 
 " Status line
 set showcmd
@@ -81,6 +81,7 @@ filetype plugin indent on
 autocmd FileType html :set filetype=xhtml
 set wildmode=longest,list,full
 set wildmenu
+au! BufRead,BufNewFile *.json set filetype=json
 
 " Invisible characters
 set listchars=trail:.,tab:>-,eol:$
@@ -105,19 +106,19 @@ endif
 
 " Navigation
 " Make cursor move by visual lines instead of file lines. Good when wrapping.
-"map <up> gk
-"map k gk
-"imap <up> <C-o>gk
-"map <down> gj
-"map j gj
-"imap <down> <C-o>gj
-"map E ge
+map <up> gk
+map k gk
+imap <up> <C-o>gk
+map <down> gj
+map j gj
+imap <down> <C-o>gj
+map E ge
 
 " Omni completion
 "autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 "autocmd FileType python set omnifunc=pythoncomplete#Complete
 "autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-""autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+"autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 "autocmd FileTYpe xml set omnifunc=xmlcomplete#CompleteTags
 "autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 "autocmd FileType c set omnifunc=ccomplete#Complete

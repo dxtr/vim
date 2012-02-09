@@ -25,3 +25,6 @@
 [submodule "bundle/bufexplorer"]
 	path = bundle/bufexplorer
 	url = https://github.com/thisivan/vim-bufexplorer
+[submodule "bundle/json"]
+	path = bundle/json
+	url = https://github.com/leshill/vim-json.git
