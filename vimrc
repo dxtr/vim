@@ -143,8 +143,8 @@ let NERDTreeHijackNetrw=0
 let NERDTreeMouseMode=1
 
 "" NERD commenter
-"let NERDCreateDefaultMappings=0
-":map <Leader>nc :call NERDComment(0, "toggle")<CR>
+let NERDCreateDefaultMappings=0
+:map <Leader>nc :call NERDComment(0, "toggle")<CR>
 
 "" fuzzyfinder
 map <Leader>b :FufBuffer<CR>
