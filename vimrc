@@ -137,10 +137,10 @@ au!
 augroup END
 
 " Plugins
-"" NERDTree
-":noremap <Leader>t :NERDTreeToggle<CR>
-"let NERDTreeHijackNetrw=0
-"let NERDTreeMouseMode=1
+" NERDTree
+:noremap <Leader>t :NERDTreeToggle<CR>
+let NERDTreeHijackNetrw=0
+let NERDTreeMouseMode=1
 
 "" NERD commenter
 "let NERDCreateDefaultMappings=0
