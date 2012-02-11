@@ -97,6 +97,7 @@ set nofoldenable " Turn off folding
 if has("gui_running")
 	set guioptions=egmrt
 	set guifont=DejaVu\ Sans\ Mono:h12
+	set tabline=0
 	augroup vimrc_autocmds
 	au!
 		autocmd BufRead * highlight OverLength ctermbg=red ctermfg=white guibg=#592929 
