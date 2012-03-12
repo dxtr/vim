@@ -1,5 +1,5 @@
 set nocompatible
-set shell=/usr/bin/zsh
+set shell=/bin/zsh
 call pathogen#infect()
 
 " Tabs
@@ -51,9 +51,9 @@ set smartcase " Ignore case when searching lowercase
 " Colors
 set background=dark
 syntax on
-colorscheme ir_black
+"colorscheme ir_black
 "colorscheme peachpuff
-"colorscheme neverland-darker
+colorscheme neverland-darker
 "let g:solarized_termcolors=256
 "let g:solarized_termtrans=0
 "colorscheme solarized
