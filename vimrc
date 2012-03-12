@@ -51,6 +51,7 @@ set smartcase " Ignore case when searching lowercase
 " Colors
 set background=dark
 syntax on
+<<<<<<< HEAD
 "colorscheme ir_black
 "colorscheme peachpuff
 colorscheme neverland-darker
@@ -58,6 +59,9 @@ colorscheme neverland-darker
 "let g:solarized_termtrans=0
 "colorscheme solarized
 "colorscheme zenburn
+=======
+colorscheme ir_black
+>>>>>>> 12855448cbe91cf8e701e62b5c82823f9d239a2c
 
 " Status line
 set showcmd
@@ -115,15 +119,6 @@ map j gj
 imap <down> <C-o>gj
 map E ge
 
-" Omni completion
-"autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-"autocmd FileType python set omnifunc=pythoncomplete#Complete
-"autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-"autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-"autocmd FileTYpe xml set omnifunc=xmlcomplete#CompleteTags
-"autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-"autocmd FileType c set omnifunc=ccomplete#Complete
-
 imap uu _
 imap hh =>
 imap aa @
@@ -155,4 +150,4 @@ let g:fuzzy_ignore = '.o;.obj;.bak;.exe;.dylib;.pyc;.pyo;.DS_Store;.db'
 "let g:AutoComplPop_IgnoreCaseOption = 0
 "let g:AutoComplPop_BehaviorKeywordLength = 2
 
-
+let g:session_autoload = 'no'
