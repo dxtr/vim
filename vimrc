@@ -51,7 +51,6 @@ set smartcase " Ignore case when searching lowercase
 " Colors
 set background=dark
 syntax on
-<<<<<<< HEAD
 "colorscheme ir_black
 "colorscheme peachpuff
 colorscheme neverland-darker
@@ -59,9 +58,6 @@ colorscheme neverland-darker
 "let g:solarized_termtrans=0
 "colorscheme solarized
 "colorscheme zenburn
-=======
-colorscheme ir_black
->>>>>>> 12855448cbe91cf8e701e62b5c82823f9d239a2c
 
 " Status line
 set showcmd
