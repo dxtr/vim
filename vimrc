@@ -59,7 +59,7 @@ colorscheme neverland-darker
 "colorscheme solarized
 "colorscheme zenburn
 hi Normal ctermbg=none
-
+hi NonText ctermbg=none
 " Status line
 set showcmd
 set ruler
