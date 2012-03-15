@@ -58,6 +58,7 @@ colorscheme neverland-darker
 "let g:solarized_termtrans=0
 "colorscheme solarized
 "colorscheme zenburn
+hi Normal ctermbg=none
 
 " Status line
 set showcmd
