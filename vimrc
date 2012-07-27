@@ -98,15 +98,16 @@ set vb t_vb= " Turn of bell
 set nofoldenable " Turn off folding
 if has("gui_running")
 	set guifont=DejaVu\ Sans\ Mono\ 8
-	set tabline=0
-	set go-=r
-	set go-=t
-	set go-=m
-	set go-=T
-	set go-=L
-	set go-=e
-	set go-=g
-	set go-=i
+	set guioptions-=m
+	set guioptions-=T
+	set guioptions-=r
+	set guioptions-=R
+	set guioptions-=l
+	set guioptions-=L
+	set guioptions-=b
+	set guioptions-=e
+	set guioptions-=g
+	set guioptions-=i
 	augroup vimrc_autocmds
 	au!
 		autocmd BufRead * highlight OverLength ctermbg=red ctermfg=white guibg=#592929 
@@ -156,3 +157,13 @@ let g:fuzzy_ignore = '.o;.obj;.bak;.exe;.dylib;.pyc;.pyo;.DS_Store;.db'
 "let g:AutoComplPop_BehaviorKeywordLength = 2
 
 let g:session_autoload = 'no'
+
+" VimOrganizer
+let g:ft_ignore_pat = '\.org'
+filetype plugin indent on
+au! BufRead,BufWrite,BufWritePost,BufNewFile *.org
+au BufEnter *.org            call org#SetOrgFileType()
+" let g:org_capture_file = '~/org_files/mycaptures.org'
+command! OrgCapture :call org#CaptureBuffer()
+command! OrgCaptureFile :call org#OpenCaptureFile()
+
