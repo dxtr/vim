@@ -107,7 +107,6 @@ if has("gui_running")
 	set guioptions-=b
 	set guioptions-=e
 	set guioptions-=g
-	set guioptions-=i
 	augroup vimrc_autocmds
 	au!
 		autocmd BufRead * highlight OverLength ctermbg=red ctermfg=white guibg=#592929 
