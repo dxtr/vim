@@ -25,6 +25,7 @@ set hidden
 set t_Co=256
 set nostartofline
 set virtualedit=block
+set switchbuf=usetab,newtab
 
 " Indenting
 set ai " Autoindent
@@ -96,9 +97,16 @@ set matchpairs+=<:>,[:],{:},(:)
 set vb t_vb= " Turn of bell
 set nofoldenable " Turn off folding
 if has("gui_running")
-	set guioptions=egmrt
-	set guifont=DejaVu\ Sans\ Mono:h12
+	set guifont=DejaVu\ Sans\ Mono\ 8
 	set tabline=0
+	set go-=r
+	set go-=t
+	set go-=m
+	set go-=T
+	set go-=L
+	set go-=e
+	set go-=g
+	set go-=i
 	augroup vimrc_autocmds
 	au!
 		autocmd BufRead * highlight OverLength ctermbg=red ctermfg=white guibg=#592929 
