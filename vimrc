@@ -97,7 +97,11 @@ set matchpairs+=<:>,[:],{:},(:)
 set vb t_vb= " Turn of bell
 set nofoldenable " Turn off folding
 if has("gui_running")
-	set guifont=DejaVu\ Sans\ Mono\ 8
+	if has("macunix")
+		set guifont=DejaVu\ Sans\ Mono:h12
+	else
+		set guifont=DejaVu\ Sans\ Mono\ 8
+	endif
 	set guioptions-=m
 	set guioptions-=T
 	set guioptions-=r
