@@ -54,13 +54,13 @@ set background=dark
 syntax on
 "colorscheme ir_black
 "colorscheme peachpuff
-colorscheme neverland-darker
-"let g:solarized_termcolors=256
-"let g:solarized_termtrans=0
-"colorscheme solarized
+"colorscheme neverland-darker
+let g:solarized_termcolors=16
+let g:solarized_termtrans=1
+colorscheme solarized
 "colorscheme zenburn
-hi Normal ctermbg=none
-hi NonText ctermbg=none
+"hi Normal ctermbg=none
+"hi NonText ctermbg=none
 " Status line
 set showcmd
 set ruler
@@ -97,16 +97,20 @@ set matchpairs+=<:>,[:],{:},(:)
 set vb t_vb= " Turn of bell
 set nofoldenable " Turn off folding
 if has("gui_running")
-	set guifont=-misc-fixed-medium-r-semicondensed--12-110-75-75-c-60-iso8859-15
-	set tabline=0
-	set go-=r
-	set go-=t
-	set go-=m
-	set go-=T
-	set go-=L
-	set go-=e
-	set go-=g
-	set go-=i
+	if has("macunix")
+		set guifont=DejaVu\ Sans\ Mono:h12
+	else
+		set guifont=DejaVu\ Sans\ Mono\ 8
+	endif
+	set guioptions-=m
+	set guioptions-=T
+	set guioptions-=r
+	set guioptions-=R
+	set guioptions-=l
+	set guioptions-=L
+	set guioptions-=b
+	set guioptions-=e
+	set guioptions-=g
 	augroup vimrc_autocmds
 	au!
 		autocmd BufRead * highlight OverLength ctermbg=red ctermfg=white guibg=#592929 
@@ -156,3 +160,13 @@ let g:fuzzy_ignore = '.o;.obj;.bak;.exe;.dylib;.pyc;.pyo;.DS_Store;.db'
 "let g:AutoComplPop_BehaviorKeywordLength = 2
 
 let g:session_autoload = 'no'
+
+" VimOrganizer
+let g:ft_ignore_pat = '\.org'
+filetype plugin indent on
+au! BufRead,BufWrite,BufWritePost,BufNewFile *.org
+au BufEnter *.org            call org#SetOrgFileType()
+" let g:org_capture_file = '~/org_files/mycaptures.org'
+command! OrgCapture :call org#CaptureBuffer()
+command! OrgCaptureFile :call org#OpenCaptureFile()
+
