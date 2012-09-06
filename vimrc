@@ -4,21 +4,21 @@ call pathogen#infect()
 
 " Tabs
 function! Tabstyle_Tabs()
-	set softtabstop=8
-	set shiftwidth=8
-	set tabstop=8
-	set noexpandtab
+        set softtabstop=8
+        set shiftwidth=8
+        set tabstop=8
+        set noexpandtab
 endfunction
 function! Tabstyle_Spaces()
-	set softtabstop=8
-	set shiftwidth=8
-	set tabstop=8
-	set expandtab
+        set softtabstop=8
+        set shiftwidth=8
+        set tabstop=8
+        set expandtab
 endfunction
 
 call Tabstyle_Tabs()
 
-let mapleader = ","
+let mapleader = "," 
 set history=1000
 set scrolloff=3
 set hidden
@@ -41,7 +41,7 @@ set splitbelow splitright
 
 " Cursor highlights
 set cursorline
-" set cursorcolumn
+set cursorcolumn
 
 " Searching
 set hlsearch " Highlight search
@@ -78,6 +78,23 @@ set backupdir=~/.vim/backup
 set backup
 set directory=~/.vim/swap
 
+" Status line
+set showcmd
+set ruler
+
+" Line wrapping
+set wrap
+set linebreak
+set textwidth=79
+set formatoptions+=t
+set wrapmargin=0
+map <C-q> {gq}
+
+" Directories
+set backupdir=~/.vim/backup
+set backup
+set directory=~/.vim/swap
+
 " File stuff
 filetype plugin indent on
 autocmd FileType html :set filetype=xhtml
@@ -98,7 +115,7 @@ set vb t_vb= " Turn of bell
 set nofoldenable " Turn off folding
 if has("gui_running")
 	if has("macunix")
-		set guifont=DejaVu\ Sans\ Mono:h12
+		set guifont=Inconsolata:h14
 	else
 		set guifont=DejaVu\ Sans\ Mono\ 8
 	endif
@@ -132,6 +149,21 @@ imap uu _
 imap hh =>
 imap aa @
 
+" Tags
+set tags=./tags;./src/tags;/usr/local/share/ctags/C;/usr/local/share/ctags/sockets;/usr/local/share/ctags/pthreads
+nnoremap <silent> <F4> :TlistToggle<CR>
+let Tlist_Show_One_File = 1
+let Tlist_Exit_OnlyWindow = 1
+let Tlist_Use_right_window = 1
+let Tlist_Sort_Type = "order"
+let Tlist_Display_Prototype = 0
+let Tlist_Compact_Format = 1
+let Tlist_GainFocus_On_ToggleOpen = 1
+let Tlist_Display_Tag_Scope = 1
+let Tlist_Close_on_Select = 1
+let Tlist_WinWidth = 40
+
+
 " GPG stuff
 augroup encrypted
 au!
@@ -161,7 +193,7 @@ let g:fuzzy_ignore = '.o;.obj;.bak;.exe;.dylib;.pyc;.pyo;.DS_Store;.db'
 
 let g:session_autoload = 'no'
 
-" VimOrganizer
+"" VimOrganizer
 let g:ft_ignore_pat = '\.org'
 filetype plugin indent on
 au! BufRead,BufWrite,BufWritePost,BufNewFile *.org
@@ -170,3 +202,19 @@ au BufEnter *.org            call org#SetOrgFileType()
 command! OrgCapture :call org#CaptureBuffer()
 command! OrgCaptureFile :call org#OpenCaptureFile()
 
+"" minibufexplorer
+let g:miniBufExplTabWrap =  1
+let g:miniBufExplModSelTarget = 1
+let g:miniBufExplUseSingleClick = 1
+let g:miniBufExplSplitBelow=0
+let g:miniBufExplorerMoreThanOne=2
+let g:miniBufExplMapWindowNavVim=1
+"let g:miniBufExplForceSyntaxEnable=1
+
+"" fugitive
+map <Leader>gs :Gstatus
+map <Leader>gc :Gcommit
+map <Leader>gb :Gblame
+map <Leader>gg :Ggrep
+map <Leader>gr :Gread
+map <Leader>gl :Glog
