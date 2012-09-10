@@ -55,3 +55,6 @@
 [submodule "bundle/VimOrganizer"]
 	path = bundle/VimOrganizer
 	url = https://github.com/hsitz/VimOrganizer
+[submodule "bundle/minibufexpl"]
+	path = bundle/minibufexpl
+	url = https://github.com/fholgado/minibufexpl.vim.git
