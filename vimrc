@@ -56,7 +56,8 @@ syntax on
 "colorscheme peachpuff
 "colorscheme neverland-darker
 let g:solarized_termcolors=16
-let g:solarized_termtrans=1
+let g:solarized_termtrans=0
+let g:solarized_italic=0
 colorscheme solarized
 "colorscheme zenburn
 "hi Normal ctermbg=none
@@ -115,9 +116,20 @@ set vb t_vb= " Turn of bell
 set nofoldenable " Turn off folding
 if has("gui_running")
 	if has("macunix")
-		set guifont=Inconsolata:h14
+		" Mac-specific settings
+		"set guifont=Inconsolata:h14
+		set guifont=GohuFont:h14
+	elseif has("gui_win32")
+		" Windows-specific settings
+	elseif has("gui_gtk2")
+		" GTK2-specific settings
+		"set guifont=erusfont\ 7
+		set guifont=GohuFont\ 14
+	elseif has("x11")
+		" X11- and GTk1-specific settings
+		set guifont=-gohu-gohufont-medium-r-normal--14-100-100-100-c-80-iso10646-1
 	else
-		set guifont=DejaVu\ Sans\ Mono\ 8
+		" Everything else. If there are such things..
 	endif
 	set guioptions-=m
 	set guioptions-=T
