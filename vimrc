@@ -54,14 +54,15 @@ set background=dark
 syntax on
 "colorscheme ir_black
 "colorscheme peachpuff
-"colorscheme neverland-darker
-let g:solarized_termcolors=16
-let g:solarized_termtrans=0
-let g:solarized_italic=0
-colorscheme solarized
+colorscheme neverland-darker
+"colorscheme neverland2-darker
+"let g:solarized_termcolors=16
+"let g:solarized_termtrans=0
+"let g:solarized_italic=0
+"colorscheme solarized
 "colorscheme zenburn
-"hi Normal ctermbg=none
-"hi NonText ctermbg=none
+hi Normal ctermbg=none
+hi NonText ctermbg=none
 " Status line
 set showcmd
 set ruler
