@@ -54,11 +54,11 @@ set background=dark
 syntax on
 "colorscheme ir_black
 "colorscheme peachpuff
-"colorscheme neverland-darker
-let g:solarized_termcolors=16
-let g:solarized_termtrans=0
-let g:solarized_italic=0
-colorscheme solarized
+colorscheme neverland-darker
+"let g:solarized_termcolors=16
+"let g:solarized_termtrans=0
+"let g:solarized_italic=0
+"colorscheme solarized
 "colorscheme zenburn
 "hi Normal ctermbg=none
 "hi NonText ctermbg=none
@@ -97,6 +97,7 @@ set backup
 set directory=~/.vim/swap
 
 " File stuff
+set autoread
 filetype plugin indent on
 autocmd FileType html :set filetype=xhtml
 set wildmode=longest,list,full
