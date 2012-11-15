@@ -26,7 +26,6 @@ set t_Co=256
 set nostartofline
 set virtualedit=block
 set switchbuf=usetab,newtab
-set cinoptions=t0,+4,(4,u4,w1
 set showmode
 set showmatch
 set ttyfast
@@ -34,6 +33,8 @@ set ttyfast
 " Indenting
 set ai " Autoindent
 set si " Smartindent
+set cindent
+set cinoptions=t0,+4,(4,u4,w1
 
 " Scrollbars
 "set sidescrolloff=2
@@ -74,8 +75,7 @@ set wrap
 set linebreak
 set textwidth=80
 set formatoptions+=t
-set wrapmargin=0
-map <C-q> {gq}
+set wrapmargin=1
 
 " Directories
 set backupdir=~/.vim/backup
@@ -85,19 +85,6 @@ set directory=~/.vim/swap
 " Status line
 set showcmd
 set ruler
-
-" Line wrapping
-set wrap
-set linebreak
-set textwidth=79
-set formatoptions+=t
-set wrapmargin=0
-map <C-q> {gq}
-
-" Directories
-set backupdir=~/.vim/backup
-set backup
-set directory=~/.vim/swap
 
 " File stuff
 set autoread
@@ -237,3 +224,12 @@ map <Leader>gb :Gblame
 map <Leader>gg :Ggrep
 map <Leader>gr :Gread
 map <Leader>gl :Glog
+
+"" SVN
+map <Leader>vs :VCSStatus
+map <Leader>vc :VCSCommit
+map <Leader>vb :VCSBlame
+map <Leader>vd :VCSDiff
+map <Leader>vi :VCSInfo
+map <Leader>vu :VCSUpdate
+
