@@ -26,6 +26,10 @@ set t_Co=256
 set nostartofline
 set virtualedit=block
 set switchbuf=usetab,newtab
+set cinoptions=t0,+4,(4,u4,w1
+set showmode
+set showmatch
+set ttyfast
 
 " Indenting
 set ai " Autoindent
@@ -39,10 +43,6 @@ set si " Smartindent
 set equalalways
 set splitbelow splitright
 
-" Cursor highlights
-set cursorline
-set cursorcolumn
-
 " Searching
 set hlsearch " Highlight search
 set incsearch " Incremental search. Search as you type.
@@ -53,18 +53,17 @@ set smartcase " Ignore case when searching lowercase
 set background=dark
 syntax on
 "colorscheme ir_black
-"colorscheme peachpuff
 colorscheme neverland-darker
-"let g:solarized_termcolors=16
-"let g:solarized_termtrans=0
-"let g:solarized_italic=0
-"colorscheme solarized
-"colorscheme zenburn
-"hi Normal ctermbg=none
-"hi NonText ctermbg=none
+
 " Status line
 set showcmd
 set ruler
+
+" Cursor highlights
+set cursorline
+set cursorcolumn
+hi CursorLine cterm=NONE ctermbg=236 ctermfg=NONE guibg=#303030 guifg=NONE
+hi CursorColumn cterm=NONE ctermbg=236 ctermfg=NONE guibg=#303030 guifg=NONE
 
 " Line wrapping
 set wrap
@@ -142,11 +141,15 @@ if has("gui_running")
 	set guioptions-=e
 	set guioptions-=g
 	augroup vimrc_autocmds
-	au!
-		autocmd BufRead * highlight OverLength ctermbg=red ctermfg=white guibg=#592929 
-		autocmd BufRead * match OverLength /\%81v.*/
-	augroup END
+"	au!
+"		autocmd BufRead * highlight OverLength ctermbg=red ctermfg=white guibg=#592929 
+"		autocmd BufRead * match OverLength /\%81v.*/
+"	augroup END
 endif
+
+highlight OverLength ctermbg=124 ctermfg=NONE guibg=#af0000 guifg=NONE
+match overlength /\%81v.*/
+let c_space_errors=1
 
 " Navigation
 " Make cursor move by visual lines instead of file lines. Good when wrapping.
@@ -163,7 +166,7 @@ imap hh =>
 imap aa @
 
 " Tags
-set tags=./tags;./src/tags;/usr/local/share/ctags/C;/usr/local/share/ctags/sockets;/usr/local/share/ctags/pthreads
+set tags=./tags,tabs,./src/tags,/usr/local/share/ctags/C,/usr/local/share/ctags/sockets,/usr/local/share/ctags/pthreads
 nnoremap <silent> <F4> :TlistToggle<CR>
 let Tlist_Show_One_File = 1
 let Tlist_Exit_OnlyWindow = 1
@@ -175,7 +178,6 @@ let Tlist_GainFocus_On_ToggleOpen = 1
 let Tlist_Display_Tag_Scope = 1
 let Tlist_Close_on_Select = 1
 let Tlist_WinWidth = 40
-
 
 " GPG stuff
 augroup encrypted
