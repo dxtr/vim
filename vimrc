@@ -53,8 +53,12 @@ set smartcase " Ignore case when searching lowercase
 set background=dark
 syntax on
 "colorscheme ir_black
+"colorscheme peachpuff
 colorscheme neverland-darker
-
+"colorscheme neverland2-darker
+"colorscheme zenburn
+hi Normal ctermbg=none
+hi NonText ctermbg=none
 " Status line
 set showcmd
 set ruler
