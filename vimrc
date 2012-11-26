@@ -233,3 +233,20 @@ map <Leader>vd :VCSDiff
 map <Leader>vi :VCSInfo
 map <Leader>vu :VCSUpdate
 
+"" Omnifunc
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+autocmd FileType c set omnifunc=ccomplete#Complete
+
+nn <F5> :%!xxd -g 1<CR>
+nn <F6> :%!xxd -g 1 -r<CR>
+
+source $VIMRUNTIME/ftplugin/man.vim
+
+" backspace
+imap ^? ^H
+
