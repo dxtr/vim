@@ -26,10 +26,15 @@ set t_Co=256
 set nostartofline
 set virtualedit=block
 set switchbuf=usetab,newtab
+set showmode
+set showmatch
+set ttyfast
 
 " Indenting
 set ai " Autoindent
 set si " Smartindent
+set cindent
+set cinoptions=t0,+4,(4,u4,w1
 
 " Scrollbars
 "set sidescrolloff=2
@@ -38,10 +43,6 @@ set si " Smartindent
 " Windows
 set equalalways
 set splitbelow splitright
-
-" Cursor highlights
-set cursorline
-set cursorcolumn
 
 " Searching
 set hlsearch " Highlight search
@@ -56,10 +57,6 @@ syntax on
 "colorscheme peachpuff
 colorscheme neverland-darker
 "colorscheme neverland2-darker
-"let g:solarized_termcolors=16
-"let g:solarized_termtrans=0
-"let g:solarized_italic=0
-"colorscheme solarized
 "colorscheme zenburn
 hi Normal ctermbg=none
 hi NonText ctermbg=none
@@ -67,13 +64,18 @@ hi NonText ctermbg=none
 set showcmd
 set ruler
 
+" Cursor highlights
+set cursorline
+set cursorcolumn
+hi CursorLine cterm=NONE ctermbg=236 ctermfg=NONE guibg=#303030 guifg=NONE
+hi CursorColumn cterm=NONE ctermbg=236 ctermfg=NONE guibg=#303030 guifg=NONE
+
 " Line wrapping
 set wrap
 set linebreak
 set textwidth=80
 set formatoptions+=t
-set wrapmargin=0
-map <C-q> {gq}
+set wrapmargin=1
 
 " Directories
 set backupdir=~/.vim/backup
@@ -84,20 +86,8 @@ set directory=~/.vim/swap
 set showcmd
 set ruler
 
-" Line wrapping
-set wrap
-set linebreak
-set textwidth=79
-set formatoptions+=t
-set wrapmargin=0
-map <C-q> {gq}
-
-" Directories
-set backupdir=~/.vim/backup
-set backup
-set directory=~/.vim/swap
-
 " File stuff
+set autoread
 filetype plugin indent on
 autocmd FileType html :set filetype=xhtml
 set wildmode=longest,list,full
@@ -142,11 +132,15 @@ if has("gui_running")
 	set guioptions-=e
 	set guioptions-=g
 	augroup vimrc_autocmds
-	au!
-		autocmd BufRead * highlight OverLength ctermbg=red ctermfg=white guibg=#592929 
-		autocmd BufRead * match OverLength /\%81v.*/
-	augroup END
+"	au!
+"		autocmd BufRead * highlight OverLength ctermbg=red ctermfg=white guibg=#592929 
+"		autocmd BufRead * match OverLength /\%81v.*/
+"	augroup END
 endif
+
+highlight OverLength ctermbg=124 ctermfg=NONE guibg=#af0000 guifg=NONE
+match overlength /\%81v.*/
+let c_space_errors=1
 
 " Navigation
 " Make cursor move by visual lines instead of file lines. Good when wrapping.
@@ -163,7 +157,7 @@ imap hh =>
 imap aa @
 
 " Tags
-set tags=./tags;./src/tags;/usr/local/share/ctags/C;/usr/local/share/ctags/sockets;/usr/local/share/ctags/pthreads
+set tags=./tags,tabs,./src/tags,/usr/local/share/ctags/C,/usr/local/share/ctags/sockets,/usr/local/share/ctags/pthreads
 nnoremap <silent> <F4> :TlistToggle<CR>
 let Tlist_Show_One_File = 1
 let Tlist_Exit_OnlyWindow = 1
@@ -230,3 +224,29 @@ map <Leader>gb :Gblame
 map <Leader>gg :Ggrep
 map <Leader>gr :Gread
 map <Leader>gl :Glog
+
+"" SVN
+map <Leader>vs :VCSStatus
+map <Leader>vc :VCSCommit
+map <Leader>vb :VCSBlame
+map <Leader>vd :VCSDiff
+map <Leader>vi :VCSInfo
+map <Leader>vu :VCSUpdate
+
+"" Omnifunc
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+autocmd FileType c set omnifunc=ccomplete#Complete
+
+nn <F5> :%!xxd -g 1<CR>
+nn <F6> :%!xxd -g 1 -r<CR>
+
+source $VIMRUNTIME/ftplugin/man.vim
+
+" backspace
+imap ^? ^H
+
