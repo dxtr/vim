@@ -1,5 +1,5 @@
 set nocompatible
-set shell=/bin/zsh
+"set shell=/bin/zsh
 call pathogen#infect()
 
 let running_uname = system("uname")
@@ -172,10 +172,12 @@ let Tlist_Display_Tag_Scope = 1
 let Tlist_Close_on_Select = 1
 let Tlist_WinWidth = 40
 
-if matchstr(running_uname, "Linux")
+if match(running_uname, "Linux") == 0
 	let Tlist_Ctags_Cmd = "/usr/bin/ctags"
-elseif matchstr(running_uname, "OpenBSD")
+elseif match(running_uname, "OpenBSD") == 0
 	let Tlist_Ctags_Cmd = "/usr/local/bin/ectags"
+elseif match(running_uname, "FreeBSD") == 0
+	let Tlist_Ctags_Cmd = "/usr/local/bin/exctags"
 endif
 
 " GPG stuff
