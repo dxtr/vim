@@ -2,6 +2,8 @@ set nocompatible
 set shell=/bin/zsh
 call pathogen#infect()
 
+let running_uname = system("uname")
+
 " Tabs
 function! Tabstyle_Tabs()
         set softtabstop=8
@@ -169,6 +171,12 @@ let Tlist_GainFocus_On_ToggleOpen = 1
 let Tlist_Display_Tag_Scope = 1
 let Tlist_Close_on_Select = 1
 let Tlist_WinWidth = 40
+
+if matchstr(running_uname, "Linux")
+	let Tlist_Ctags_Cmd = "/usr/bin/ctags"
+elseif matchstr(running_uname, "OpenBSD")
+	let Tlist_Ctags_Cmd = "/usr/local/bin/ectags"
+endif
 
 " GPG stuff
 augroup encrypted
