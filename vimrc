@@ -55,11 +55,8 @@ set smartcase " Ignore case when searching lowercase
 " Colors
 set background=dark
 syntax on
-"colorscheme ir_black
-"colorscheme peachpuff
-colorscheme neverland-darker
-"colorscheme neverland2-darker
-"colorscheme zenburn
+"colorscheme neverland-darker
+colorscheme neuromouse
 hi Normal ctermbg=none
 hi NonText ctermbg=none
 " Status line
