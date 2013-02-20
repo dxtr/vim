@@ -31,6 +31,9 @@ set switchbuf=usetab,newtab
 set showmode
 set showmatch
 set ttyfast
+set modeline
+set modelines=5
+set cm=blowfish
 
 " Indenting
 set ai " Autoindent
@@ -105,21 +108,14 @@ set matchpairs+=<:>,[:],{:},(:)
 set vb t_vb= " Turn of bell
 set nofoldenable " Turn off folding
 if has("gui_running")
-	if has("macunix")
-		" Mac-specific settings
-		"set guifont=Inconsolata:h14
-		set guifont=GohuFont:h14
-	elseif has("gui_win32")
-		" Windows-specific settings
-	elseif has("gui_gtk2")
-		" GTK2-specific settings
-		"set guifont=erusfont\ 7
-		set guifont=GohuFont\ 14
-	elseif has("x11")
-		" X11- and GTk1-specific settings
+	if has("macunix") " mac-specific settings
+		set guifont=GohuFont-Medium:h11
+	elseie has("gui_win32") " Windows-specific settings
+	elseif has("gui_gtk2") " GTK2-specific settings
+		set guifont=GohuFont\ 9
+	elseif has("x11") " X11- and GTK1-specific settings
 		set guifont=-gohu-gohufont-medium-r-normal--14-100-100-100-c-80-iso10646-1
-	else
-		" Everything else. If there are such things..
+	else " Everything else.
 	endif
 	set guioptions-=m
 	set guioptions-=T
@@ -182,7 +178,11 @@ augroup encrypted
 au!
         autocmd BufReadPre,FileReadPre *.gpg set viminfo=
         autocmd BufReadPre,FileReadPre *.gpg set noswapfile
+	autocmd BufReadPre,FileReadPre *.gpg set nobackup
+	autocmd BufReadPre,FileReadPre *.gpg set nowritebackup
         autocmd BufReadPre,FileReadPre *.gpg set bin
+	autocmd BufReadPre,FileReadPre *.gpg set bufhidden=wipe
+	autocmd BufReadPre,FileReadPre *.gpg set modeline
         autocmd BufReadPost,FileReadPost *.gpg set nobin
 augroup END
 
