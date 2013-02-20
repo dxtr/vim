@@ -106,7 +106,7 @@ set backspace=indent,eol,start
 set number " Show line numbers
 set matchpairs+=<:>,[:],{:},(:)
 set vb t_vb= " Turn of bell
-set nofoldenable " Turn off folding
+set foldenable " Turn off folding
 if has("gui_running")
 	if has("macunix") " mac-specific settings
 		set guifont=GohuFont-Medium:h11
