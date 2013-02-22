@@ -59,7 +59,9 @@ set smartcase " Ignore case when searching lowercase
 set background=dark
 syntax on
 "colorscheme neverland-darker
-colorscheme neuromouse
+"colorscheme neuromouse
+"colorscheme vividchalk
+colorscheme ir_black
 hi Normal ctermbg=none
 hi NonText ctermbg=none
 " Status line
@@ -69,8 +71,8 @@ set ruler
 " Cursor highlights
 set cursorline
 set cursorcolumn
-hi CursorLine cterm=NONE ctermbg=236 ctermfg=NONE guibg=#303030 guifg=NONE
-hi CursorColumn cterm=NONE ctermbg=236 ctermfg=NONE guibg=#303030 guifg=NONE
+"hi CursorLine cterm=NONE ctermbg=236 ctermfg=NONE guibg=#303030 guifg=NONE
+"hi CursorColumn cterm=NONE ctermbg=236 ctermfg=NONE guibg=#303030 guifg=NONE
 
 " Line wrapping
 set wrap
@@ -107,6 +109,8 @@ set number " Show line numbers
 set matchpairs+=<:>,[:],{:},(:)
 set vb t_vb= " Turn of bell
 set foldenable " Turn off folding
+set foldmethod=syntax
+let perl_fold = 1
 if has("gui_running")
 	if has("macunix") " mac-specific settings
 		set guifont=GohuFont-Medium:h11
