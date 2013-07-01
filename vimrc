@@ -35,16 +35,6 @@ set modeline
 set modelines=5
 set cm=blowfish
 
-" Indenting
-set ai " Autoindent
-set si " Smartindent
-set cindent
-set cinoptions=t0,+4,(4,u4,w1
-
-" Scrollbars
-"set sidescrolloff=2
-"set numberwidth=4
-
 " Windows
 set equalalways
 set splitbelow splitright
@@ -58,21 +48,12 @@ set smartcase " Ignore case when searching lowercase
 " Colors
 set background=dark
 syntax on
-"colorscheme neverland-darker
-"colorscheme neuromouse
-"colorscheme vividchalk
-colorscheme ir_black
+colorscheme inkpot
 hi Normal ctermbg=none
 hi NonText ctermbg=none
 " Status line
 set showcmd
 set ruler
-
-" Cursor highlights
-set cursorline
-set cursorcolumn
-"hi CursorLine cterm=NONE ctermbg=236 ctermfg=NONE guibg=#303030 guifg=NONE
-"hi CursorColumn cterm=NONE ctermbg=236 ctermfg=NONE guibg=#303030 guifg=NONE
 
 " Line wrapping
 set wrap
@@ -108,8 +89,8 @@ set backspace=indent,eol,start
 set number " Show line numbers
 set matchpairs+=<:>,[:],{:},(:)
 set vb t_vb= " Turn of bell
-set foldenable " Turn off folding
-set foldmethod=syntax
+set nofoldenable " Turn off folding
+set foldmethod=indent
 let perl_fold = 1
 if has("gui_running")
 	if has("macunix") " mac-specific settings
@@ -131,10 +112,6 @@ if has("gui_running")
 	set guioptions-=e
 	set guioptions-=g
 	augroup vimrc_autocmds
-"	au!
-"		autocmd BufRead * highlight OverLength ctermbg=red ctermfg=white guibg=#592929 
-"		autocmd BufRead * match OverLength /\%81v.*/
-"	augroup END
 endif
 
 highlight OverLength ctermbg=124 ctermfg=NONE guibg=#af0000 guifg=NONE
