@@ -48,7 +48,8 @@ set smartcase " Ignore case when searching lowercase
 " Colors
 set background=dark
 syntax on
-colorscheme inkpot
+"colorscheme inkpot
+colorscheme molokai
 hi Normal ctermbg=none
 hi NonText ctermbg=none
 " Status line
@@ -74,6 +75,7 @@ set ruler
 " File stuff
 set autoread
 filetype plugin indent on
+set omnifunc=syntaxcomplete#Complete
 autocmd FileType html :set filetype=xhtml
 set wildmode=longest,list,full
 set wildmenu
