@@ -1,6 +1,29 @@
 set nocompatible
 "set shell=/bin/zsh
-call pathogen#infect()
+"call pathogen#infect()
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+Bundle 'L9'
+Bundle 'thisivan/vim-bufexplorer'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-endwise'
+Bundle 'leshill/vim-json'
+Bundle 'fholgado/minibufexpl.vim'
+Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'chrisbra/NrrwRgn'
+Bundle 'garbas/vim-snipmate'
+Bundle 'honza/vim-snippets'
+Bundle 'kien/tabman.vim'
+Bundle 'tomtom/tlib_vim'
+Bundle 'clones/vim-fuzzyfinder'
+Bundle 'rainerborene/vim-pony'
+Bundle 'ironcamel/vim-script-runner'
+Bundle 'hsitz/VimOrganizer'
+Bundle 'sukima/xmledit'
+Bundle 'Valloric/YouCompleteMe'
 
 let running_uname = system("uname")
 
@@ -49,7 +72,8 @@ set smartcase " Ignore case when searching lowercase
 set background=dark
 syntax on
 "colorscheme inkpot
-colorscheme molokai
+"colorscheme molokai
+colorscheme Tomorrow-Night-Eighties
 hi Normal ctermbg=none
 hi NonText ctermbg=none
 " Status line
@@ -96,8 +120,8 @@ set foldmethod=indent
 let perl_fold = 1
 if has("gui_running")
 	if has("macunix") " mac-specific settings
-		set guifont=GohuFont-Medium:h11
-	elseie has("gui_win32") " Windows-specific settings
+		set guifont=Menlo\ Regular:h12
+	elseif has("gui_win32") " Windows-specific settings
 	elseif has("gui_gtk2") " GTK2-specific settings
 		set guifont=GohuFont\ 9
 	elseif has("x11") " X11- and GTK1-specific settings
@@ -240,3 +264,5 @@ source $VIMRUNTIME/ftplugin/man.vim
 " backspace
 imap ^? ^H
 
+" markdown
+let g:vim_markdown_folding_disabled=1
