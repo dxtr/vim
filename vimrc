@@ -10,8 +10,9 @@ Bundle 'thisivan/vim-bufexplorer'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-endwise'
 Bundle 'leshill/vim-json'
-Bundle 'fholgado/minibufexpl.vim'
+"Bundle 'fholgado/minibufexpl.vim'
 Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'chrisbra/NrrwRgn'
 Bundle 'garbas/vim-snipmate'
@@ -23,7 +24,7 @@ Bundle 'rainerborene/vim-pony'
 Bundle 'ironcamel/vim-script-runner'
 Bundle 'hsitz/VimOrganizer'
 Bundle 'sukima/xmledit'
-Bundle 'Valloric/YouCompleteMe'
+Bundle 'bling/vim-airline'
 
 let running_uname = system("uname")
 
@@ -46,17 +47,36 @@ call Tabstyle_Tabs()
 let mapleader = "," 
 set history=1000
 set scrolloff=3
+set sidescrolloff=5
+set display+=lastline
 set hidden
 set t_Co=256
 set nostartofline
 set virtualedit=block
-set switchbuf=usetab,newtab
+set switchbuf=useopen,split
 set showmode
 set showmatch
 set ttyfast
+set lazyredraw
 set modeline
 set modelines=5
 set cm=blowfish
+set complete-=i
+set smarttab
+set shiftround
+set nrformats-=octal
+set ttimeout
+set ttimeoutlen=50
+set laststatus=2
+set encoding=utf-8
+set fileformats+=mac
+
+if &listchars ==# 'eol:$'
+	set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+	if !has('win32') && (&termencoding ==# 'utf-8' || &encoding ==# 'utf-8')
+		let &listchars = "tab:\u21e5 ,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u00b7"
+	endif
+endif
 
 " Windows
 set equalalways
@@ -67,6 +87,7 @@ set hlsearch " Highlight search
 set incsearch " Incremental search. Search as you type.
 set ignorecase " Ignore case
 set smartcase " Ignore case when searching lowercase
+nnoremap <leader>f :set invhlsearch<CR>
 
 " Colors
 set background=dark
@@ -108,9 +129,15 @@ au! BufRead,BufNewFile *.json set filetype=json
 " Invisible characters
 set listchars=trail:.,tab:>-,eol:$
 set nolist
-:noremap <Leader>i :set list!<CR> " Toggle invisible characters
+noremap <Leader>i :set list!<CR> " Toggle invisible characters
 
 " Misc settings
+nnoremap <leader>v <C-w>v<C-w>l
+nnoremap <leader>s <C-w>s
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 set backspace=indent,eol,start
 set number " Show line numbers
 set matchpairs+=<:>,[:],{:},(:)
@@ -194,7 +221,7 @@ au!
 augroup END
 
 " Plugins
-" NERDTree
+"" NERDTree
 :noremap <Leader>t :NERDTreeToggle<CR>
 let NERDTreeHijackNetrw=0
 let NERDTreeMouseMode=1
@@ -203,8 +230,11 @@ let NERDTreeMouseMode=1
 let NERDCreateDefaultMappings=0
 :map <Leader>nc :call NERDComment(0, "toggle")<CR>
 
+"" BufExplorer
+map <Leader>be :BufExplorer<CR>
+
 "" fuzzyfinder
-map <Leader>b :FufBuffer<CR>
+map <Leader>bf :FufBuffer<CR>
 let g:fuzzy_ignore = '.o;.obj;.bak;.exe;.dylib;.pyc;.pyo;.DS_Store;.db'
 
 "" autocomplpop
@@ -223,29 +253,30 @@ command! OrgCapture :call org#CaptureBuffer()
 command! OrgCaptureFile :call org#OpenCaptureFile()
 
 "" minibufexplorer
-let g:miniBufExplTabWrap =  1
-let g:miniBufExplModSelTarget = 1
-let g:miniBufExplUseSingleClick = 1
-let g:miniBufExplSplitBelow=0
-let g:miniBufExplorerMoreThanOne=2
-let g:miniBufExplMapWindowNavVim=1
+"let g:miniBufExplTabWrap =  1
+"let g:miniBufExplModSelTarget = 1
+"let g:miniBufExplUseSingleClick = 1
+"let g:miniBufExplSplitBelow=0
+"let g:miniBufExplorerMoreThanOne=2
+"let g:miniBufExplMapWindowNavVim=1
 "let g:miniBufExplForceSyntaxEnable=1
 
 "" fugitive
-map <Leader>gs :Gstatus
-map <Leader>gc :Gcommit
-map <Leader>gb :Gblame
-map <Leader>gg :Ggrep
-map <Leader>gr :Gread
-map <Leader>gl :Glog
+nmap <Leader>gs :Gstatus<CR>
+nmap <Leader>gc :Gcommit<CR>
+nmap <Leader>gb :Gblame<CR>
+nmap <Leader>gg :Ggrep<CR>
+nmap <Leader>gr :Gread<CR>
+nmap <Leader>gl :Glog<CR>
+nmap <Leader>gd :Gdiff<CR>
 
 "" SVN
-map <Leader>vs :VCSStatus
-map <Leader>vc :VCSCommit
-map <Leader>vb :VCSBlame
-map <Leader>vd :VCSDiff
-map <Leader>vi :VCSInfo
-map <Leader>vu :VCSUpdate
+nmap <Leader>vs :VCSStatus<CR>
+nmap <Leader>vc :VCSCommit<CR>
+nmap <Leader>vb :VCSBlame<CR>
+nmap <Leader>vd :VCSDiff<CR>
+nmap <Leader>vi :VCSInfo<CR>
+nmap <Leader>vu :VCSUpdate<CR>
 
 "" Omnifunc
 autocmd FileType python set omnifunc=pythoncomplete#Complete
@@ -266,3 +297,7 @@ imap ^? ^H
 
 " markdown
 let g:vim_markdown_folding_disabled=1
+
+" airline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='murmur'
