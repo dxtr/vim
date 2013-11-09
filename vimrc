@@ -92,8 +92,6 @@ nnoremap <leader>f :set invhlsearch<CR>
 " Colors
 set background=dark
 syntax on
-"colorscheme inkpot
-"colorscheme molokai
 colorscheme Tomorrow-Night-Eighties
 hi Normal ctermbg=none
 hi NonText ctermbg=none
