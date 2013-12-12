@@ -25,6 +25,7 @@ Bundle 'ironcamel/vim-script-runner'
 Bundle 'hsitz/VimOrganizer'
 Bundle 'sukima/xmledit'
 Bundle 'bling/vim-airline'
+Bundle 'jnwhiteh/vim-golang'
 
 let running_uname = system("uname")
 
@@ -138,6 +139,7 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 set backspace=indent,eol,start
 set number " Show line numbers
+set relativenumber " Show relative line numers
 set matchpairs+=<:>,[:],{:},(:)
 set vb t_vb= " Turn of bell
 set nofoldenable " Turn off folding
