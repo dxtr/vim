@@ -1,4 +1,6 @@
 backup/*
 swap/*
 sessions/*
+bundle
 .netrwhist
+*.un~

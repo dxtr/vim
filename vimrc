@@ -14,6 +14,7 @@ Bundle 'leshill/vim-json'
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
+Bundle 'scrooloose/syntastic'
 Bundle 'chrisbra/NrrwRgn'
 Bundle 'garbas/vim-snipmate'
 Bundle 'honza/vim-snippets'
@@ -26,6 +27,8 @@ Bundle 'hsitz/VimOrganizer'
 Bundle 'sukima/xmledit'
 Bundle 'bling/vim-airline'
 Bundle 'jnwhiteh/vim-golang'
+Bundle 'Rykka/riv.vim'
+Bundle 'Lukc/vim-pkgfile'
 
 let running_uname = system("uname")
 
@@ -301,3 +304,7 @@ let g:vim_markdown_folding_disabled=1
 " airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='murmur'
+
+" pkgfile
+au BufNewFile,BufRead *Pkgfile set filetype=pkgfile
+au BufNewFile,BufRead *Pkgfile-* set filetype=pkgfile
