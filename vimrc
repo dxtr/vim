@@ -93,7 +93,7 @@ nnoremap <leader>f :set invhlsearch<CR>
 " Colors
 set background=dark
 syntax on
-colorscheme Tomorrow-Night-Eighties
+colorscheme Tomorrow-Night-Bright
 hi Normal ctermbg=none
 hi NonText ctermbg=none
 " Status line
