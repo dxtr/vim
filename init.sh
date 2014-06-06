@@ -2,16 +2,9 @@
 
 # This should be run before the first time vim is run with this configuration.
 
-if [[ -d $HOME/.vim ]]; then
-	echo "You already have a .vim directory!"
-	exit
-fi
-
 git submodule init
 git submodule update
-cd ..
-mv vim $HOME/.vim
-ln -s ~/.vim/vimrc ~/.vimrc
+ln -s vimrc $HOME/.vimrc
 
 if [[ ! -d $HOME/.vim/bundle ]]; then
 	mkdir $HOME/.vim/bundle
