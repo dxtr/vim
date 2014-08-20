@@ -107,7 +107,8 @@ set ruler
 set wrap
 set linebreak
 set textwidth=80
-set formatoptions+=t
+set colorcolumn=-1
+set formatoptions+=ct
 set wrapmargin=1
 
 " Directories
@@ -170,8 +171,6 @@ if has("gui_running")
 	augroup vimrc_autocmds
 endif
 
-highlight OverLength ctermbg=124 ctermfg=NONE guibg=#af0000 guifg=NONE
-match overlength /\%81v.*/
 let c_space_errors=1
 
 " Navigation
