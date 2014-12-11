@@ -27,7 +27,6 @@ Bundle 'hsitz/VimOrganizer'
 Bundle 'sukima/xmledit'
 Bundle 'bling/vim-airline'
 Bundle 'jnwhiteh/vim-golang'
-Bundle 'Rykka/riv.vim'
 Bundle 'Lukc/vim-pkgfile'
 
 let running_uname = system("uname")
