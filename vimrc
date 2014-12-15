@@ -235,7 +235,8 @@ let NERDCreateDefaultMappings=0
 map <Leader>be :BufExplorer<CR>
 
 "" fuzzyfinder
-map <Leader>bf :FufBuffer<CR>
+map <Leader>f :FufFileWithCurrentBufferDir **/<C-M>
+map <Leader>b :FufBuffer<C-M>
 let g:fuzzy_ignore = '.o;.obj;.bak;.exe;.dylib;.pyc;.pyo;.DS_Store;.db'
 
 "" autocomplpop
