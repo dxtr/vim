@@ -28,6 +28,7 @@ Bundle 'sukima/xmledit'
 Bundle 'bling/vim-airline'
 Bundle 'jnwhiteh/vim-golang'
 Bundle 'Lukc/vim-pkgfile'
+Bundle 'myusuf3/numbers.vim'
 
 let running_uname = system("uname")
 
@@ -44,16 +45,6 @@ function! Tabstyle_Spaces()
         set tabstop=4
         set expandtab
 endfunction
-
-function! NumberToggle()
-  if(&relativenumber == 1)
-    set number
-  else
-    set relativenumber
-  endif
-endfunc
-
-nnoremap <C-n> :call NumberToggle()<cr>
 
 call Tabstyle_Tabs()
 
@@ -152,7 +143,6 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 set backspace=indent,eol,start
 set number " Show line numbers
-set relativenumber " Show relative line numers
 set matchpairs+=<:>,[:],{:},(:)
 set vb t_vb= " Turn of bell
 set nofoldenable " Turn off folding
@@ -160,7 +150,7 @@ set foldmethod=indent
 let perl_fold = 1
 if has("gui_running")
 	if has("macunix") " mac-specific settings
-		set guifont=Menlo\ Regular:h12
+		set guifont=Input:h12
 	elseif has("gui_win32") " Windows-specific settings
 	elseif has("gui_gtk2") " GTK2-specific settings
 		set guifont=GohuFont\ 9
@@ -317,3 +307,8 @@ let g:airline_theme='murmur'
 " pkgfile
 au BufNewFile,BufRead *Pkgfile set filetype=pkgfile
 au BufNewFile,BufRead *Pkgfile-* set filetype=pkgfile
+
+" Numbers
+let g:numbers_exclude = ['unite', 'tagbar', 'startify', 'gundo', 'vimshell', 'w3m', 'minibufexpl', 'nerdtree' ]
+nnoremap <F3> :NumbersToggle<CR>
+nnoremap <F4> :NumbersOnOff<CR>
