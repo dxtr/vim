@@ -311,4 +311,4 @@ au BufNewFile,BufRead *Pkgfile-* set filetype=pkgfile
 " Numbers
 let g:numbers_exclude = ['unite', 'tagbar', 'startify', 'gundo', 'vimshell', 'w3m', 'minibufexpl', 'nerdtree' ]
 nnoremap <F3> :NumbersToggle<CR>
-nnoremap <F4> :NumbersOnOff<CR>
+"nnoremap <F4> :NumbersOnOff<CR>
