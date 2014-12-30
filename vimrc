@@ -28,22 +28,25 @@ Bundle 'sukima/xmledit'
 Bundle 'bling/vim-airline'
 Bundle 'jnwhiteh/vim-golang'
 Bundle 'Lukc/vim-pkgfile'
-Bundle 'myusuf3/numbers.vim'
+
+if v:version < 704
+	Bundle 'myusuf3/numbers.vim'
+endif
 
 let running_uname = system("uname")
 
 " Tabs
 function! Tabstyle_Tabs()
-        set softtabstop=8
-        set shiftwidth=8
-        set tabstop=8
-        set noexpandtab
+	set softtabstop=8
+	set shiftwidth=8
+	set tabstop=8
+	set noexpandtab
 endfunction
 function! Tabstyle_Spaces()
-        set softtabstop=4
-        set shiftwidth=4
-        set tabstop=4
-        set expandtab
+	set softtabstop=4
+	set shiftwidth=4
+	set tabstop=4
+	set expandtab
 endfunction
 
 call Tabstyle_Tabs()
@@ -167,7 +170,6 @@ if has("gui_running")
 	set guioptions-=b
 	set guioptions-=e
 	set guioptions-=g
-	augroup vimrc_autocmds
 endif
 
 let c_space_errors=1
@@ -210,15 +212,15 @@ endif
 
 " GPG stuff
 augroup encrypted
-au!
-        autocmd BufReadPre,FileReadPre *.gpg set viminfo=
-        autocmd BufReadPre,FileReadPre *.gpg set noswapfile
+	au!
+	autocmd BufReadPre,FileReadPre *.gpg set viminfo=
+	autocmd BufReadPre,FileReadPre *.gpg set noswapfile
 	autocmd BufReadPre,FileReadPre *.gpg set nobackup
 	autocmd BufReadPre,FileReadPre *.gpg set nowritebackup
-        autocmd BufReadPre,FileReadPre *.gpg set bin
+	autocmd BufReadPre,FileReadPre *.gpg set bin
 	autocmd BufReadPre,FileReadPre *.gpg set bufhidden=wipe
 	autocmd BufReadPre,FileReadPre *.gpg set modeline
-        autocmd BufReadPost,FileReadPost *.gpg set nobin
+	autocmd BufReadPost,FileReadPost *.gpg set nobin
 augroup END
 
 " Plugins
@@ -235,8 +237,8 @@ let NERDCreateDefaultMappings=0
 map <Leader>be :BufExplorer<CR>
 
 "" fuzzyfinder
-map <Leader>f :FufFileWithCurrentBufferDir **/<C-M>
-map <Leader>b :FufBuffer<C-M>
+map <Leader>ff :FufFileWithCurrentBufferDir **/<C-M>
+map <Leader>fb :FufBuffer<C-M>
 let g:fuzzy_ignore = '.o;.obj;.bak;.exe;.dylib;.pyc;.pyo;.DS_Store;.db'
 
 "" autocomplpop
@@ -309,6 +311,8 @@ au BufNewFile,BufRead *Pkgfile set filetype=pkgfile
 au BufNewFile,BufRead *Pkgfile-* set filetype=pkgfile
 
 " Numbers
-let g:numbers_exclude = ['unite', 'tagbar', 'startify', 'gundo', 'vimshell', 'w3m', 'minibufexpl', 'nerdtree' ]
-nnoremap <F3> :NumbersToggle<CR>
-"nnoremap <F4> :NumbersOnOff<CR>
+if v:version < 703
+	let g:numbers_exclude = ['unite', 'tagbar', 'startify', 'gundo', 'vimshell', 'w3m', 'minibufexpl', 'nerdtree' ]
+	nnoremap <F3> :NumbersToggle<CR>
+	"nnoremap <F4> :NumbersOnOff<CR>
+endif
