@@ -31,8 +31,12 @@ Bundle 'Lukc/vim-pkgfile'
 
 if v:version < 704
 	Bundle 'myusuf3/numbers.vim'
+	let g:numbers_exclude = ['unite', 'tagbar', 'startify', 'gundo', 'vimshell', 'w3m', 'minibufexpl', 'nerdtree' ]
+	nnoremap <F3> :NumbersToggle<CR>
+else
+	set relativenumber
+	set number
 endif
-
 let running_uname = system("uname")
 
 " Tabs
@@ -145,7 +149,6 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 set backspace=indent,eol,start
-set number " Show line numbers
 set matchpairs+=<:>,[:],{:},(:)
 set vb t_vb= " Turn of bell
 set nofoldenable " Turn off folding
@@ -310,9 +313,3 @@ let g:airline_theme='murmur'
 au BufNewFile,BufRead *Pkgfile set filetype=pkgfile
 au BufNewFile,BufRead *Pkgfile-* set filetype=pkgfile
 
-" Numbers
-if v:version < 703
-	let g:numbers_exclude = ['unite', 'tagbar', 'startify', 'gundo', 'vimshell', 'w3m', 'minibufexpl', 'nerdtree' ]
-	nnoremap <F3> :NumbersToggle<CR>
-	"nnoremap <F4> :NumbersOnOff<CR>
-endif
