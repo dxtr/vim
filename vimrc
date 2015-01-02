@@ -28,29 +28,23 @@ Bundle 'sukima/xmledit'
 Bundle 'bling/vim-airline'
 Bundle 'jnwhiteh/vim-golang'
 Bundle 'Lukc/vim-pkgfile'
+Bundle 'godlygeek/tabular'
+Bundle 'jelera/vim-javascript-syntax'
 
-if v:version < 704
-	Bundle 'myusuf3/numbers.vim'
-	let g:numbers_exclude = ['unite', 'tagbar', 'startify', 'gundo', 'vimshell', 'w3m', 'minibufexpl', 'nerdtree' ]
-	nnoremap <F3> :NumbersToggle<CR>
-else
-	set relativenumber
-	set number
-endif
 let running_uname = system("uname")
 
 " Tabs
 function! Tabstyle_Tabs()
-	set softtabstop=8
-	set shiftwidth=8
-	set tabstop=8
-	set noexpandtab
+    set softtabstop=8
+    set shiftwidth=8
+    set tabstop=8
+    set noexpandtab
 endfunction
 function! Tabstyle_Spaces()
-	set softtabstop=4
-	set shiftwidth=4
-	set tabstop=4
-	set expandtab
+    set softtabstop=4
+    set shiftwidth=4
+    set tabstop=4
+    set expandtab
 endfunction
 
 call Tabstyle_Tabs()
@@ -81,12 +75,13 @@ set ttimeoutlen=50
 set laststatus=2
 set encoding=utf-8
 set fileformats+=mac
+set number
 
 if &listchars ==# 'eol:$'
-	set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
-	if !has('win32') && (&termencoding ==# 'utf-8' || &encoding ==# 'utf-8')
-		let &listchars = "tab:\u21e5 ,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u00b7"
-	endif
+    set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+    if !has('win32') && (&termencoding ==# 'utf-8' || &encoding ==# 'utf-8')
+        let &listchars = "tab:\u21e5 ,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u00b7"
+    endif
 endif
 
 " Windows
@@ -155,24 +150,24 @@ set nofoldenable " Turn off folding
 set foldmethod=indent
 let perl_fold = 1
 if has("gui_running")
-	if has("macunix") " mac-specific settings
-		set guifont=Input:h12
-	elseif has("gui_win32") " Windows-specific settings
-	elseif has("gui_gtk2") " GTK2-specific settings
-		set guifont=GohuFont\ 9
-	elseif has("x11") " X11- and GTK1-specific settings
-		set guifont=-gohu-gohufont-medium-r-normal--14-100-100-100-c-80-iso10646-1
-	else " Everything else.
-	endif
-	set guioptions-=m
-	set guioptions-=T
-	set guioptions-=r
-	set guioptions-=R
-	set guioptions-=l
-	set guioptions-=L
-	set guioptions-=b
-	set guioptions-=e
-	set guioptions-=g
+    if has("macunix") " mac-specific settings
+        set guifont=Input:h12
+    elseif has("gui_win32") " Windows-specific settings
+    elseif has("gui_gtk2") " GTK2-specific settings
+        set guifont=GohuFont\ 9
+    elseif has("x11") " X11- and GTK1-specific settings
+        set guifont=-gohu-gohufont-medium-r-normal--14-100-100-100-c-80-iso10646-1
+    else " Everything else.
+    endif
+    set guioptions-=m
+    set guioptions-=T
+    set guioptions-=r
+    set guioptions-=R
+    set guioptions-=l
+    set guioptions-=L
+    set guioptions-=b
+    set guioptions-=e
+    set guioptions-=g
 endif
 
 let c_space_errors=1
@@ -206,24 +201,24 @@ let Tlist_Close_on_Select = 1
 let Tlist_WinWidth = 40
 
 if match(running_uname, "Linux") == 0
-	let Tlist_Ctags_Cmd = "/usr/bin/ctags"
+    let Tlist_Ctags_Cmd = "/usr/bin/ctags"
 elseif match(running_uname, "OpenBSD") == 0
-	let Tlist_Ctags_Cmd = "/usr/local/bin/ectags"
+    let Tlist_Ctags_Cmd = "/usr/local/bin/ectags"
 elseif match(running_uname, "FreeBSD") == 0
-	let Tlist_Ctags_Cmd = "/usr/local/bin/exctags"
+    let Tlist_Ctags_Cmd = "/usr/local/bin/exctags"
 endif
 
 " GPG stuff
 augroup encrypted
-	au!
-	autocmd BufReadPre,FileReadPre *.gpg set viminfo=
-	autocmd BufReadPre,FileReadPre *.gpg set noswapfile
-	autocmd BufReadPre,FileReadPre *.gpg set nobackup
-	autocmd BufReadPre,FileReadPre *.gpg set nowritebackup
-	autocmd BufReadPre,FileReadPre *.gpg set bin
-	autocmd BufReadPre,FileReadPre *.gpg set bufhidden=wipe
-	autocmd BufReadPre,FileReadPre *.gpg set modeline
-	autocmd BufReadPost,FileReadPost *.gpg set nobin
+    au!
+    autocmd BufReadPre,FileReadPre *.gpg set viminfo=
+    autocmd BufReadPre,FileReadPre *.gpg set noswapfile
+    autocmd BufReadPre,FileReadPre *.gpg set nobackup
+    autocmd BufReadPre,FileReadPre *.gpg set nowritebackup
+    autocmd BufReadPre,FileReadPre *.gpg set bin
+    autocmd BufReadPre,FileReadPre *.gpg set bufhidden=wipe
+    autocmd BufReadPre,FileReadPre *.gpg set modeline
+    autocmd BufReadPost,FileReadPost *.gpg set nobin
 augroup END
 
 " Plugins
@@ -312,4 +307,27 @@ let g:airline_theme='murmur'
 " pkgfile
 au BufNewFile,BufRead *Pkgfile set filetype=pkgfile
 au BufNewFile,BufRead *Pkgfile-* set filetype=pkgfile
+
+" tabular
+if exists(":Tabularize")
+    nmap <Leader>a= :Tabularize /=<CR>
+    vmap <Leader>a= :Tabularize /=<CR>
+    nmap <Leader>a: :Tabularize /:\zs<CR>
+    vmap <Leader>a: :Tabularize /:\zs<CR>
+endif
+
+" syntastic
+let g:syntastic_check_on_open = 1
+let g:syntastic_enable_signs = 1
+let g:syntastic_disabled_filetypes = ['html']
+let g:syntastic_check_on_wq = 0
+let g:syntastic_cpp_check_header = 1
+let g:syntastic_cpp_no_include_search = 0
+let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_cpp_compiler = "clang++"
+let g:syntastic_java_checkers = []
+let g:syntastic_error_symbol = "X"
+let g:syntastic_style_error_symbol = ">"
+let g:syntastic_warning_symbol = "!"
+let g:syntastic_style_warning_symbol = ">"
 
