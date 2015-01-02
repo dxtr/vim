@@ -1,3 +1,5 @@
+" vim: syntax=vim
+
 set nocompatible
 "set shell=/bin/zsh
 "call pathogen#infect()
