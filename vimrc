@@ -32,6 +32,7 @@ Bundle 'jnwhiteh/vim-golang'
 Bundle 'Lukc/vim-pkgfile'
 Bundle 'godlygeek/tabular'
 Bundle 'jelera/vim-javascript-syntax'
+Bundle 'chriskempson/base16-vim'
 
 let running_uname = system("uname")
 
@@ -100,7 +101,9 @@ nnoremap <leader>f :set invhlsearch<CR>
 " Colors
 set background=dark
 syntax on
-colorscheme Tomorrow-Night-Bright
+"colorscheme Tomorrow-Night-Bright
+let base16colorspace=256
+colorscheme base16-colors
 hi Normal ctermbg=none
 hi NonText ctermbg=none
 " Status line
