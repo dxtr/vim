@@ -6,7 +6,7 @@ set nocompatible
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-Bundle 'gmarik/vundle'
+Bundle 'gmarik/Vundle.vim'
 Bundle 'L9'
 Bundle 'kien/ctrlp.vim'
 Bundle 'majutsushi/tagbar'
