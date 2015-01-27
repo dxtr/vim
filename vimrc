@@ -8,11 +8,14 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 Bundle 'L9'
-Bundle 'thisivan/vim-bufexplorer'
+Bundle 'kien/ctrlp.vim'
+Bundle 'majutsushi/tagbar'
+Bundle 'mjoey/vim-magento'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-endwise'
 Bundle 'leshill/vim-json'
-"Bundle 'fholgado/minibufexpl.vim'
+Bundle 'airblade/vim-gitgutter'
+Bundle 'edkolev/promptline.vim'
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
@@ -29,7 +32,6 @@ Bundle 'hsitz/VimOrganizer'
 Bundle 'sukima/xmledit'
 Bundle 'bling/vim-airline'
 Bundle 'jnwhiteh/vim-golang'
-Bundle 'Lukc/vim-pkgfile'
 Bundle 'godlygeek/tabular'
 Bundle 'jelera/vim-javascript-syntax'
 Bundle 'chriskempson/base16-vim'
@@ -38,6 +40,12 @@ let running_uname = system("uname")
 
 " Tabs
 function! Tabstyle_Tabs()
+    set softtabstop=4
+    set shiftwidth=4
+    set tabstop=4
+    set noexpandtab
+endfunction
+function! Tabstyle_BSD()
     set softtabstop=8
     set shiftwidth=8
     set tabstop=8
@@ -50,7 +58,7 @@ function! Tabstyle_Spaces()
     set expandtab
 endfunction
 
-call Tabstyle_Tabs()
+call Tabstyle_Spaces()
 
 let mapleader = "," 
 set history=1000
