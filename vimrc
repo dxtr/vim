@@ -161,6 +161,7 @@ set matchpairs+=<:>,[:],{:},(:)
 set vb t_vb= " Turn of bell
 set nofoldenable " Turn off folding
 set foldmethod=indent
+set shortmess+=I
 let perl_fold = 1
 if has("gui_running")
     if has("macunix") " mac-specific settings
