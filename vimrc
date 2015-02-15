@@ -1,16 +1,21 @@
+" vim: syntax=vim
+
 set nocompatible
 "set shell=/bin/zsh
 "call pathogen#infect()
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-Bundle 'gmarik/vundle'
+Bundle 'gmarik/Vundle.vim'
 Bundle 'L9'
-Bundle 'thisivan/vim-bufexplorer'
+Bundle 'kien/ctrlp.vim'
+Bundle 'majutsushi/tagbar'
+Bundle 'mjoey/vim-magento'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-endwise'
 Bundle 'leshill/vim-json'
-"Bundle 'fholgado/minibufexpl.vim'
+Bundle 'airblade/vim-gitgutter'
+Bundle 'edkolev/promptline.vim'
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
@@ -27,27 +32,31 @@ Bundle 'hsitz/VimOrganizer'
 Bundle 'sukima/xmledit'
 Bundle 'bling/vim-airline'
 Bundle 'jnwhiteh/vim-golang'
-Bundle 'Rykka/riv.vim'
-Bundle 'Lukc/vim-pkgfile'
+Bundle 'godlygeek/tabular'
+Bundle 'jelera/vim-javascript-syntax'
+Bundle 'chriskempson/base16-vim'
 
 let running_uname = system("uname")
 
 " Tabs
 function! Tabstyle_Tabs()
-        set softtabstop=8
-        set shiftwidth=8
-        set tabstop=8
-        set noexpandtab
+    set softtabstop=4
+    set shiftwidth=4
+    set tabstop=4
+    set noexpandtab
+endfunction
+function! Tabstyle_BSD()
+    set softtabstop=8
+    set shiftwidth=8
+    set tabstop=8
+    set noexpandtab
 endfunction
 function! Tabstyle_Spaces()
-        set softtabstop=8
-        set shiftwidth=8
-        set tabstop=8
-        set expandtab
+    set softtabstop=4
+    set shiftwidth=4
+    set tabstop=4
+    set expandtab
 endfunction
-
-" OpenBSD style
-" Ignore indents caused by parentheses in OpenBSD style.
 function! IgnoreParenIndent()
     let indent = cindent(v:lnum)
 
@@ -61,9 +70,6 @@ function! IgnoreParenIndent()
         return (indent)
     endif
 endfun
-
-
-" Follow the OpenBSD style(9).
 function! OpenBSD_Style()
     setlocal cindent
     setlocal cinoptions=(4200,u4200,+0.5s,*500,:0,t0,U4200
@@ -76,8 +82,9 @@ function! OpenBSD_Style()
 endfun
 
 call OpenBSD_Style()
+"call Tabstyle_Spaces()
 
-"let mapleader = "," 
+let mapleader = "," 
 set history=1000
 set scrolloff=3
 set sidescrolloff=5
@@ -103,12 +110,13 @@ set ttimeoutlen=50
 set laststatus=2
 set encoding=utf-8
 set fileformats+=mac
+set number
 
 if &listchars ==# 'eol:$'
-	set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
-	if !has('win32') && (&termencoding ==# 'utf-8' || &encoding ==# 'utf-8')
-		let &listchars = "tab:\u21e5 ,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u00b7"
-	endif
+    set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+    if !has('win32') && (&termencoding ==# 'utf-8' || &encoding ==# 'utf-8')
+        let &listchars = "tab:\u21e5 ,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u00b7"
+    endif
 endif
 
 " Windows
@@ -125,7 +133,9 @@ nnoremap <leader>f :set invhlsearch<CR>
 " Colors
 set background=dark
 syntax on
-colorscheme Tomorrow-Night-Bright
+"colorscheme Tomorrow-Night-Bright
+let base16colorspace=256
+colorscheme base16-colors
 hi Normal ctermbg=none
 hi NonText ctermbg=none
 " Status line
@@ -171,33 +181,31 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 set backspace=indent,eol,start
-set number " Show line numbers
-set relativenumber " Show relative line numers
 set matchpairs+=<:>,[:],{:},(:)
 set vb t_vb= " Turn of bell
 set nofoldenable " Turn off folding
 set foldmethod=indent
+set shortmess+=I
 let perl_fold = 1
 if has("gui_running")
-	if has("macunix") " mac-specific settings
-		set guifont=Menlo\ Regular:h12
-	elseif has("gui_win32") " Windows-specific settings
-	elseif has("gui_gtk2") " GTK2-specific settings
-		set guifont=GohuFont\ 9
-	elseif has("x11") " X11- and GTK1-specific settings
-		set guifont=-gohu-gohufont-medium-r-normal--14-100-100-100-c-80-iso10646-1
-	else " Everything else.
-	endif
-	set guioptions-=m
-	set guioptions-=T
-	set guioptions-=r
-	set guioptions-=R
-	set guioptions-=l
-	set guioptions-=L
-	set guioptions-=b
-	set guioptions-=e
-	set guioptions-=g
-	augroup vimrc_autocmds
+    if has("macunix") " mac-specific settings
+        set guifont=Input:h12
+    elseif has("gui_win32") " Windows-specific settings
+    elseif has("gui_gtk2") " GTK2-specific settings
+        set guifont=GohuFont\ 9
+    elseif has("x11") " X11- and GTK1-specific settings
+        set guifont=-gohu-gohufont-medium-r-normal--14-100-100-100-c-80-iso10646-1
+    else " Everything else.
+    endif
+    set guioptions-=m
+    set guioptions-=T
+    set guioptions-=r
+    set guioptions-=R
+    set guioptions-=l
+    set guioptions-=L
+    set guioptions-=b
+    set guioptions-=e
+    set guioptions-=g
 endif
 
 let c_space_errors=1
@@ -231,24 +239,24 @@ let Tlist_Close_on_Select = 1
 let Tlist_WinWidth = 40
 
 if match(running_uname, "Linux") == 0
-	let Tlist_Ctags_Cmd = "/usr/bin/ctags"
+    let Tlist_Ctags_Cmd = "/usr/bin/ctags"
 elseif match(running_uname, "OpenBSD") == 0
-	let Tlist_Ctags_Cmd = "/usr/local/bin/ectags"
+    let Tlist_Ctags_Cmd = "/usr/local/bin/ectags"
 elseif match(running_uname, "FreeBSD") == 0
-	let Tlist_Ctags_Cmd = "/usr/local/bin/exctags"
+    let Tlist_Ctags_Cmd = "/usr/local/bin/exctags"
 endif
 
 " GPG stuff
 augroup encrypted
-au!
-        autocmd BufReadPre,FileReadPre *.gpg set viminfo=
-        autocmd BufReadPre,FileReadPre *.gpg set noswapfile
-	autocmd BufReadPre,FileReadPre *.gpg set nobackup
-	autocmd BufReadPre,FileReadPre *.gpg set nowritebackup
-        autocmd BufReadPre,FileReadPre *.gpg set bin
-	autocmd BufReadPre,FileReadPre *.gpg set bufhidden=wipe
-	autocmd BufReadPre,FileReadPre *.gpg set modeline
-        autocmd BufReadPost,FileReadPost *.gpg set nobin
+    au!
+    autocmd BufReadPre,FileReadPre *.gpg set viminfo=
+    autocmd BufReadPre,FileReadPre *.gpg set noswapfile
+    autocmd BufReadPre,FileReadPre *.gpg set nobackup
+    autocmd BufReadPre,FileReadPre *.gpg set nowritebackup
+    autocmd BufReadPre,FileReadPre *.gpg set bin
+    autocmd BufReadPre,FileReadPre *.gpg set bufhidden=wipe
+    autocmd BufReadPre,FileReadPre *.gpg set modeline
+    autocmd BufReadPost,FileReadPost *.gpg set nobin
 augroup END
 
 " Plugins
@@ -265,7 +273,8 @@ let NERDCreateDefaultMappings=0
 map <Leader>be :BufExplorer<CR>
 
 "" fuzzyfinder
-map <Leader>bf :FufBuffer<CR>
+map <Leader>ff :FufFileWithCurrentBufferDir **/<C-M>
+map <Leader>fb :FufBuffer<C-M>
 let g:fuzzy_ignore = '.o;.obj;.bak;.exe;.dylib;.pyc;.pyo;.DS_Store;.db'
 
 "" autocomplpop
@@ -336,3 +345,30 @@ let g:airline_theme='murmur'
 " pkgfile
 au BufNewFile,BufRead *Pkgfile set filetype=pkgfile
 au BufNewFile,BufRead *Pkgfile-* set filetype=pkgfile
+
+" tabular
+if exists(":Tabularize")
+    nmap <Leader>a= :Tabularize /=<CR>
+    vmap <Leader>a= :Tabularize /=<CR>
+    nmap <Leader>a: :Tabularize /:\zs<CR>
+    vmap <Leader>a: :Tabularize /:\zs<CR>
+endif
+
+" syntastic
+let g:syntastic_check_on_open = 1
+let g:syntastic_enable_signs = 1
+let g:syntastic_disabled_filetypes = ['html']
+let g:syntastic_check_on_wq = 0
+let g:syntastic_cpp_check_header = 1
+let g:syntastic_cpp_no_include_search = 0
+let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_cpp_compiler = "clang++"
+let g:syntastic_java_checkers = []
+let g:syntastic_error_symbol = "X"
+let g:syntastic_style_error_symbol = ">"
+let g:syntastic_warning_symbol = "!"
+let g:syntastic_style_warning_symbol = ">"
+
+" Gitgutter
+let g:gitgutter_realtime = 0
+let g:gitgutter_eager = 0
