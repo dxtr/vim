@@ -46,9 +46,38 @@ function! Tabstyle_Spaces()
         set expandtab
 endfunction
 
-call Tabstyle_Tabs()
+" OpenBSD style
+" Ignore indents caused by parentheses in OpenBSD style.
+function! IgnoreParenIndent()
+    let indent = cindent(v:lnum)
 
-let mapleader = "," 
+    if indent > 4000
+        if cindent(v:lnum - 1) > 4000
+            return indent(v:lnum - 1)
+        else
+            return indent(v:lnum - 1) + 4
+        endif
+    else
+        return (indent)
+    endif
+endfun
+
+
+" Follow the OpenBSD style(9).
+function! OpenBSD_Style()
+    setlocal cindent
+    setlocal cinoptions=(4200,u4200,+0.5s,*500,:0,t0,U4200
+    setlocal indentexpr=IgnoreParenIndent()
+    setlocal indentkeys=0{,0},0),:,0#,!^F,o,O,e
+    setlocal noexpandtab
+    setlocal shiftwidth=8
+    setlocal tabstop=8
+    setlocal textwidth=80
+endfun
+
+call OpenBSD_Style()
+
+"let mapleader = "," 
 set history=1000
 set scrolloff=3
 set sidescrolloff=5
@@ -106,7 +135,7 @@ set ruler
 " Line wrapping
 set wrap
 set linebreak
-set textwidth=80
+set textwidth=72
 set colorcolumn=-1
 set formatoptions+=ct
 set wrapmargin=1
