@@ -35,6 +35,7 @@ Bundle 'jnwhiteh/vim-golang'
 Bundle 'godlygeek/tabular'
 Bundle 'jelera/vim-javascript-syntax'
 Bundle 'chriskempson/base16-vim'
+Bundle 'oblitum/rainbow'
 
 let running_uname = system("uname")
 
@@ -372,3 +373,5 @@ let g:syntastic_style_warning_symbol = ">"
 " Gitgutter
 let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 0
+
+let g:rainbow_active = 1
