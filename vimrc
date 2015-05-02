@@ -3,7 +3,7 @@
 set nocompatible
 "set shell=/bin/zsh
 "call pathogen#infect()
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#rc()
 
 Bundle 'gmarik/Vundle.vim'
@@ -134,8 +134,8 @@ nnoremap <leader>f :set invhlsearch<CR>
 set background=dark
 syntax on
 "colorscheme Tomorrow-Night-Bright
-let base16colorspace=256
-colorscheme base16-colors
+"let base16colorspace=256
+colorscheme neuromouse
 hi Normal ctermbg=none
 hi NonText ctermbg=none
 " Status line
